@@ -96,6 +96,7 @@ namespace BlogManagementAPI.Repository
                 BlogModel existingModel = _blogModels.FirstOrDefault(data => data.Id == blogModel.Id);
                 if (existingModel != null)
                 {
+                    existingModel.UserName = blogModel.UserName;
                     existingModel.Text = blogModel.Text;
                     SaveChanges();
                     response.Success = true;
@@ -117,6 +118,8 @@ namespace BlogManagementAPI.Repository
             return response;
 
         }
+        
+
 
         public Response<BlogModel> Delete(int id)
         {
